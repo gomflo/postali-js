@@ -1,0 +1,71 @@
+{
+  "name": "postali",
+  "version": "0.1.0",
+  "description": "Cliente oficial de la API gratuita de códigos postales de Postali (México, Colombia, España). Sin dependencias, con tipos.",
+  "keywords": [
+    "codigo postal",
+    "códigos postales",
+    "cp",
+    "sepomex",
+    "colonias",
+    "postal code",
+    "zip code",
+    "mexico",
+    "colombia",
+    "espana",
+    "spain",
+    "geonames",
+    "api"
+  ],
+  "homepage": "https://postali.app/api/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gomflo/postali-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gomflo/postali-js/issues"
+  },
+  "license": "MIT",
+  "author": "Postali <hi@postali.app>",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:live": "POSTALI_LIVE=1 vitest run test/live.test.ts",
+    "lint:pkg": "publint && attw --pack .",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "publint": "^0.3.24",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
